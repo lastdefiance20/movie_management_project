@@ -1,5 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -71,7 +69,7 @@ void addNode(Node* head_ptr, MV mv) {
 
 //영화 추가 함수 (노드 추가 함수 호출)
 void addMV(Node* head_ptr, void(*add)(Node* head, MV mv)) {
-	MV mv = {};
+	MV mv = {0, };
 	printf("지시에 따라 정보를 입력해 주세요\n");
 
 	//scanf 연속사용으로 버퍼비우기 필요
@@ -174,7 +172,7 @@ void readMV(Node* head_ptr, void(*add)(Node* head, MV mv)) {
 	}
 
 	while (!feof(fp)) {
-		MV mv = {};
+		MV mv = {0, };
 
 		fscanf(fp, "%[^\n]s", &mv.name);
 		fscanf(fp, "%d %d %d %d %s %s\n", &mv.ymd.year, &mv.ymd.month, &mv.ymd.day, &mv.run_time, &mv.genre, &mv.film_dist);
