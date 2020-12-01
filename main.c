@@ -74,9 +74,8 @@ void addMV(Node* head_ptr, void(*add)(Node* head, MV mv)) {
 
 	//scanf 연속사용으로 버퍼비우기 필요
 	printf("영화 이름 : ");
-	scanf("%[^\n]s", &mv.name);
 	//공백포함 X  -> 수정함, 이제 이름에는 공백포함 가능
-	//scanf("%s", &mv.name); 옛날버전
+	scanf("%s", &mv.name); 옛날버전
 	clearInputBuffer();
 
 	printf("영화 개봉일 (년 월 일) : ");
@@ -124,7 +123,7 @@ void deleteNode(Node* head_ptr, char* name) {
 void delMV(Node* head_ptr, void(*del)(Node* head, char* name)) {
 	char name[100]; //동적할당으로 바꿔보기
 	printf("지우고 싶은 영화의 이름을 입력하시오 : ");
-	scanf("%[^\n]s", &name);
+	scanf("%s", &name);
 	del(head_ptr, name);
 }
 
@@ -132,7 +131,7 @@ void delMV(Node* head_ptr, void(*del)(Node* head, char* name)) {
 void searchMV(Node* head, int (*shouldprint)(const MV*, char* search), void(*print)(const MV*)) {
 	Node* cur = head->next;
 	char search[100]; //동적할당으로 바꿔보기
-	scanf("%[^\n]s", &search);
+	scanf("%s", &search);
 
 	printf("\n------검색 결과------\n");
 
@@ -174,11 +173,11 @@ void readMV(Node* head_ptr, void(*add)(Node* head, MV mv)) {
 	while (!feof(fp)) {
 		MV mv = {0, };
 
-		fscanf(fp, "%[^\n]s", &mv.name);
-		fscanf(fp, "%d %d %d %d %s %s\n", &mv.ymd.year, &mv.ymd.month, &mv.ymd.day, &mv.run_time, &mv.genre, &mv.film_dist);
+		//fscanf(fp, "%[^\n]s", &mv.name);
+		//fscanf(fp, "%d %d %d %d %s %s\n", &mv.ymd.year, &mv.ymd.month, &mv.ymd.day, &mv.run_time, &mv.genre, &mv.film_dist);
 
 		//이름은 띄어쓰기 가능, 이전버전 혹시몰라 남김
-		//fscanf(fp, "%s %d %d %d %d %s %s\n", &mv.name, &mv.ymd.year, &mv.ymd.month, &mv.ymd.day, &mv.run_time, &mv.genre, &mv.film_dist);
+		fscanf(fp, "%s %d %d %d %d %s %s\n", &mv.name, &mv.ymd.year, &mv.ymd.month, &mv.ymd.day, &mv.run_time, &mv.genre, &mv.film_dist);
 		add(head_ptr, mv);
 	}
 	fclose(fp);
@@ -193,11 +192,11 @@ void saveMV(Node* head) {
 	Node* cur = head->next;
 	while (cur != NULL) {
 		MV* mv = &cur->mv;
-		fprintf(fp, "%s\n", mv->name);
-		fprintf(fp, "%d %d %d %d %s %s\n", mv->ymd.year, mv->ymd.month, mv->ymd.day, mv->run_time, mv->genre, mv->film_dist);
+		//fprintf(fp, "%s\n", mv->name);
+		//fprintf(fp, "%d %d %d %d %s %s\n", mv->ymd.year, mv->ymd.month, mv->ymd.day, mv->run_time, mv->genre, mv->film_dist);
 
 		//이름은 띄어쓰기 가능, 이전버전 혹시몰라 남김
-		//fprintf(fp, "%s %d %d %d %d %s %s\n", mv->name, mv->ymd.year, mv->ymd.month, mv->ymd.day, mv->run_time, mv->genre, mv->film_dist);
+		fprintf(fp, "%s %d %d %d %d %s %s\n", mv->name, mv->ymd.year, mv->ymd.month, mv->ymd.day, mv->run_time, mv->genre, mv->film_dist);
 		cur = cur->next;
 	}
 	fclose(fp);
