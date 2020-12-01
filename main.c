@@ -75,7 +75,7 @@ void addMV(Node* head_ptr, void(*add)(Node* head, MV mv)) {
 	//scanf 연속사용으로 버퍼비우기 필요
 	printf("영화 이름 : ");
 	//공백포함 X  -> 수정함, 이제 이름에는 공백포함 가능
-	scanf("%s", &mv.name); 옛날버전
+	scanf("%s", &mv.name); //옛날버전
 	clearInputBuffer();
 
 	printf("영화 개봉일 (년 월 일) : ");
