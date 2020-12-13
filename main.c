@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+// if you use visual studio, #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -378,7 +378,7 @@ int main() {
 			n = 0;
 		}
 	}
-	////메모리 해제(운영체제에게 반납)
+	//메모리 해제(운영체제에게 반납)
 	free(head);
 	return 0;
 }
