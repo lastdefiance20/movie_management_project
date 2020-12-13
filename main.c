@@ -193,6 +193,24 @@ void RandomPrint(Node* head, void(*print)(const MV*)) {
 	}
 }
 
+//연결리스트 초기화
+void clearList(Node** head2dPtr)
+{
+	Node* head = *head2dPtr;
+
+	//만약 리스트가 비었을경우 리턴
+	if (head->next == NULL) return;
+
+	//새로운 연결리스트 생성
+	Node* head_new = (Node*)malloc(sizeof(Node));
+	head_new->next = NULL;
+
+	free(head);
+
+	//연결리스트의 시작 head를 새로운 연결리스트로 교체
+	*head2dPtr = head_new;
+}
+
 //movie.dat 파일을 읽어와 연결리스트를 생성하는 함수 (노드 추가 함수 호출)
 void readMV(Node* head_ptr, void(*add)(Node* head, MV mv)) {
 	FILE* fp = NULL;
@@ -349,6 +367,7 @@ int main() {
 
 		else if (n == 5)
 		{
+			clearList(&head);
 			readMV(head, addNode);
 		}
 
