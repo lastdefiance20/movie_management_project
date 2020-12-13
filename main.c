@@ -164,7 +164,7 @@ int searchfilm_dist(const MV* mv, char* film_dist) {
 	else return 0;
 }
 
-////영화 랜덤 선택 이후 영화 출력 함수 (MV 출력 함수 호출)
+//영화 랜덤 선택 이후 영화 출력 함수 (MV 출력 함수 호출)
 void RandomPrint(Node* head, void(*print)(const MV*)) {
 	//만약 리스트가 비었을경우 리턴
 	if (head->next == NULL) return;
@@ -256,7 +256,7 @@ void saveMV(Node* head) {
 	fclose(fp);
 }
 
-//sorting 함수
+//러닝타임  함수
 void sortByRuntime(Node** head2dPtr) {
 	Node* head = *head2dPtr;
 
@@ -297,7 +297,6 @@ void sortByRuntime(Node** head2dPtr) {
 	//연결리스트의 시작 head를 새로운 연결리스트로 교체
 	*head2dPtr = head_new;
 }
-
 
 //메인 함수, 주요 코드 포함 금지 -> 다 함수로 빼라!
 int main() {
