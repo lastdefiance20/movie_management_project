@@ -16,8 +16,11 @@
 
 ## 실행방법
 git clone https://github.com/lastdefiance20/movie_management_project.git
+
 cd movie_management_project
+
 make
+
 ./main
 
 ## 오류사항
